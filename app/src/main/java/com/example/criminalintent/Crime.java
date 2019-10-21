@@ -42,7 +42,7 @@ public class Crime {
         this.mSolved = mSolved;
     }
 
-    public boolean requiresPolice() { return mRequiresPolice}
+    public boolean requiresPolice() { return mRequiresPolice; }
 
     public void setmRequiresPolice(boolean tf){
         mRequiresPolice = tf;
