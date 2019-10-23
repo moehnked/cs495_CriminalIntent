@@ -14,6 +14,8 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.UUID;
 
 public class CrimeFragment extends Fragment {
@@ -53,7 +55,9 @@ public class CrimeFragment extends Fragment {
         });
 
         mDateButton = v.findViewById(R.id.crime_date);
-        mDateButton.setText(mCrime.getmDate().toString());
+        String pattern = "E, LLLL d, yyyy";
+        SimpleDateFormat df = new SimpleDateFormat(pattern, Locale.US);
+        mDateButton.setText(df.format(mCrime.getmDate()));
         mDateButton.setEnabled(false);
 
         mSolvedCheckbox = v.findViewById(R.id.crime_solved);

@@ -13,7 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class CrimeListFragment extends Fragment {
 
@@ -59,7 +62,9 @@ public class CrimeListFragment extends Fragment {
         public void bind(Crime crime){
             mCrime = crime;
             mTitleTextView.setText(mCrime.getmTitle());
-            mDateTextView.setText(mCrime.getmDate().toString());
+            String pattern = "E, LLLL d, yyyy";
+            SimpleDateFormat df = new SimpleDateFormat(pattern, Locale.US);
+            mDateTextView.setText(df.format(mCrime.getmDate()));
             mSolvedImageView.setVisibility(crime.ismSolved() ? View.VISIBLE : View.INVISIBLE);
         }
 
