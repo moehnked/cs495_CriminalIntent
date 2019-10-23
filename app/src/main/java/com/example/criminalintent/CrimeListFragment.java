@@ -1,5 +1,6 @@
 package com.example.criminalintent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,7 +65,10 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View view){
-            Toast.makeText(getActivity(), mCrime.getmTitle() + " clicked!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), mCrime.getmTitle() + " clicked!", Toast.LENGTH_SHORT).show();
+            //Intent intent = new Intent(getActivity(), CrimeActivity.class);
+            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getmId());
+            startActivity(intent);
         }
     }
 
