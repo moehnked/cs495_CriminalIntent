@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 public class CrimeLab {
@@ -39,6 +40,41 @@ public class CrimeLab {
             }
         }
 
-        return null;
+        //look at random index
+        //if match, return crime,
+        //else, split the list in two, search each of those lists
+
+
+        return searchList(mCrimes, id);
+    }
+
+    private Crime searchList(List<Crime> listSplit, UUID id){
+        if(listSplit.size() == 0){
+            return null;
+        }
+        Random r = new Random();
+        int joint = ((r.nextInt() % listSplit.size()) + listSplit.size()) % listSplit.size();
+        if(listSplit.get(joint).getmId() == id){
+            return listSplit.get(joint);
+        } else {
+            Crime toReturn;
+            if((toReturn = searchList(listSplit.subList(0,clamp(joint - 1, 0, listSplit.size()-1)), id)) != null){
+                return toReturn;
+            } else if ((toReturn = searchList(listSplit.subList(joint, listSplit.size()-1), id)) != null){
+                return toReturn;
+            } else {
+                return null;
+            }
+        }
+    }
+
+    private int clamp(int x, int min, int max){
+        if(x < min){
+            return min;
+        } else if (x > max){
+            return max;
+        } else {
+            return x;
+        }
     }
 }
