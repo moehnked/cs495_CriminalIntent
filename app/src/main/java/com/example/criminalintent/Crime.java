@@ -9,6 +9,7 @@ public class Crime {
     private Date mDate;
     private boolean mSolved;
     private boolean mRequiresPolice;
+    private boolean mHasChanged;
 
     public UUID getmId() {
         return mId;
@@ -51,6 +52,14 @@ public class Crime {
     public Crime(){
         mId = UUID.randomUUID();
         mDate = new Date();
+        mHasChanged = false;
     }
 
+    public boolean ismHasChanged() {
+        return mHasChanged;
+    }
+
+    public void setmHasChanged(boolean mHasChanged) {
+        this.mHasChanged = mHasChanged;
+    }
 }

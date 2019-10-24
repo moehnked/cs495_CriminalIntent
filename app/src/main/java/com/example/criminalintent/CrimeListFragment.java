@@ -48,7 +48,12 @@ public class CrimeListFragment extends Fragment {
             mAdapter = new CrimeAdapter(crimes);
             mCrimeRecyclerView.setAdapter(mAdapter);
         } else {
-            mAdapter.notifyDataSetChanged();
+            for (Crime c : crimes) {
+                if(c.ismHasChanged()){
+                    mAdapter.notifyItemChanged(crimes.indexOf(c));
+                    c.setmHasChanged(false);
+                }
+            }
         }
 
 

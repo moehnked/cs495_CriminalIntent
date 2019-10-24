@@ -61,6 +61,7 @@ public class CrimeFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 //TODO
+                mCrime.setmHasChanged(true);
             }
         });
 
@@ -76,6 +77,7 @@ public class CrimeFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
                 mCrime.setmSolved(isChecked);
+                mCrime.setmHasChanged(true);
             }
         });
 
