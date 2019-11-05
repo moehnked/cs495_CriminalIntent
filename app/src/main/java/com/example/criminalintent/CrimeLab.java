@@ -34,17 +34,6 @@ public class CrimeLab {
     }
 
     public Crime getCrime(UUID id){
-        for (Crime crime: mCrimes){
-            if (crime.getmId().equals(id)){
-                return crime;
-            }
-        }
-
-        //look at random index
-        //if match, return crime,
-        //else, split the list in two, search each of those lists
-
-
         return searchList(mCrimes, id);
     }
 
@@ -52,15 +41,14 @@ public class CrimeLab {
         if(listSplit.size() == 0){
             return null;
         }
-        Random r = new Random();
-        int joint = ((r.nextInt() % listSplit.size()) + listSplit.size()) % listSplit.size();
-        if(listSplit.get(joint).getmId() == id){
-            return listSplit.get(joint);
+        //look at mid point
+        if(listSplit.get(listSplit.size()/2).getmId() == id){
+            return listSplit.get(listSplit.size()/2);
         } else {
             Crime toReturn;
-            if((toReturn = searchList(listSplit.subList(0,clamp(joint - 1, 0, listSplit.size()-1)), id)) != null){
+            if((toReturn = searchList(listSplit.subList(0, listSplit.size()/2), id)) != null){
                 return toReturn;
-            } else if ((toReturn = searchList(listSplit.subList(joint, listSplit.size()-1), id)) != null){
+            }else if ((toReturn = searchList(listSplit.subList(clamp(listSplit.size()/2 + 1, 0, listSplit.size()), listSplit.size()), id)) != null){
                 return toReturn;
             } else {
                 return null;
