@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -20,6 +21,7 @@ import java.util.UUID;
 
 public class CrimeFragment extends Fragment {
     private static final String ARG_CRIME_ID = "crime_id";
+    private static final String DIALOG_DATE = "DialogDate";
 
     private Crime mCrime;
     private EditText mTitleField;
@@ -69,7 +71,16 @@ public class CrimeFragment extends Fragment {
         String pattern = "E, LLLL d, yyyy";
         SimpleDateFormat df = new SimpleDateFormat(pattern, Locale.US);
         mDateButton.setText(df.format(mCrime.getmDate()));
-        mDateButton.setEnabled(false);
+        //mDateButton.setEnabled(false);
+        mDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                //DatePickerFragment dialog = new DatePickerFragment();
+                DatePickerFragment dialog = DatePickerFragment.newInstance(mCrime.getmDate());
+                dialog.show(manager, DIALOG_DATE);
+            }
+        });
 
         mSolvedCheckbox = v.findViewById(R.id.crime_solved);
         mSolvedCheckbox.setChecked(mCrime.ismSolved());
