@@ -62,22 +62,10 @@ public class CrimeListFragment extends Fragment {
             mAdapter = new CrimeAdapter(crimes);
             mCrimeRecyclerView.setAdapter(mAdapter);
         } else {
-            for (Crime c : crimes) {
-                if(c.ismHasChanged()){
-                    mAdapter.notifyItemChanged(crimes.indexOf(c));
-                    c.setmHasChanged(false);
-                }
-            }
+            mAdapter.notifyDataSetChanged();
         }
         updateSubtitle();
 
-    }
-
-    private void updateUIFull(){
-        CrimeLab crimeLab = CrimeLab.get(getActivity());
-        List<Crime> crimes = crimeLab.getcrimes();
-        mAdapter = new CrimeAdapter(crimes);
-        mCrimeRecyclerView.setAdapter(mAdapter);
     }
 
     private class CrimeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
