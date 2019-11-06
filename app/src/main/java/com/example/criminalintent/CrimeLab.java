@@ -34,11 +34,11 @@ public class CrimeLab {
     }
 
     public Crime getCrime(UUID id){
-        for (Crime crime: mCrimes){
-            if (crime.getmId().equals(id)){
-                return crime;
-            }
-        }
+//        for (Crime crime: mCrimes){
+//            if (crime.getmId().equals(id)){
+//                return crime;
+//            }
+//        }
 
         //look at random index
         //if match, return crime,
@@ -52,8 +52,7 @@ public class CrimeLab {
         if(listSplit.size() == 0){
             return null;
         }
-        Random r = new Random();
-        int joint = ((r.nextInt() % listSplit.size()) + listSplit.size()) % listSplit.size();
+        int joint = listSplit.size() / 2;
         if(listSplit.get(joint).getmId() == id){
             return listSplit.get(joint);
         } else {
