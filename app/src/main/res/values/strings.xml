@@ -9,6 +9,9 @@
     <string name="date_picker_title">Date of crime:</string>
     <string name="time_picker_title">Time of crime:</string>
 
+    <string name="empty_list_prompt">There are no crimes in the system.</string>
+    <string name="create_new_crime">New Crime</string>
+
     <string name="new_crime">New Crime</string>
     <plurals name="subtitle_plural">
         <item quantity="one">%1$d crime</item>
