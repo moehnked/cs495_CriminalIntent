@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,6 +40,7 @@ public class CrimeFragment extends Fragment {
     private Button mDateButton;
     private Button mTimeButton;
     private CheckBox mSolvedCheckbox;
+    private Button mReportButton;
 
     public static CrimeFragment newInstance(UUID crimeId){
         Bundle args = new Bundle();
@@ -116,6 +118,18 @@ public class CrimeFragment extends Fragment {
             }
         });
 
+        mReportButton = v.findViewById(R.id.crime_report);
+        mReportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_TEXT, getCrimeReport());
+                i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.crime_report_subject));
+                startActivity(i);
+            }
+        });
+
         return v;
     }
 
@@ -149,6 +163,18 @@ public class CrimeFragment extends Fragment {
 
     private void updateTime(){
         mTimeButton.setText(mCrime.getmDate().getHours() + ":" + mCrime.getmDate().getMinutes());
+    }
+
+    private String getCrimeReport(){
+        String solvedString = mCrime.ismSolved() ? getString(R.string.crime_report_solved) : getString(R.string.crime_report_unsolved);
+
+        String dateFormat = "EEE, MMM dd";
+        String dateString = DateFormat.format(dateFormat, mCrime.getmDate()).toString();
+
+        String suspect = (mCrime.getmSuspect() == null) ? getString(R.string.crime_report_no_suspect) : getString(R.string.crime_report_suspect, mCrime.getmSuspect());
+
+        String report = getString(R.string.crime_report, mCrime.getmTitle(), dateString, solvedString, suspect);
+        return report;
     }
 
     @Override
