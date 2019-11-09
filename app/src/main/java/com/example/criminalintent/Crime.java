@@ -11,6 +11,16 @@ public class Crime {
     private boolean mRequiresPolice;
     private boolean mHasChanged;
 
+    public String getmSuspect() {
+        return mSuspect;
+    }
+
+    public void setmSuspect(String mSuspect) {
+        this.mSuspect = mSuspect;
+    }
+
+    private String mSuspect;
+
     public UUID getmId() {
         return mId;
     }
