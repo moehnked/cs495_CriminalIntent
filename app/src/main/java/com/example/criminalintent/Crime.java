@@ -29,6 +29,10 @@ public class Crime {
         this.mSuspect = mSuspect;
     }
 
+    public String getPhotoFilename() {
+        return "IMG_" + getmId().toString() + ".jpg";
+    }
+
     private String mSuspect;
 
     public UUID getmId() {
