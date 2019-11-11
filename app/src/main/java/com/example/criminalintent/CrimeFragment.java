@@ -48,6 +48,7 @@ public class CrimeFragment extends Fragment {
     private CheckBox mSolvedCheckbox;
     private Button mReportButton;
     private Button mSuspectButton;
+    private Button mCallButton;
 
     public static CrimeFragment newInstance(UUID crimeId){
         Bundle args = new Bundle();
@@ -148,6 +149,15 @@ public class CrimeFragment extends Fragment {
             }
         });
 
+        mCallButton = v.findViewById(R.id.call_suspect);
+        updateCallButton();
+        mCallButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: call
+            }
+        });
+
         final Intent pickContact = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
         mSuspectButton = v.findViewById(R.id.crime_suspect);
         mSuspectButton.setOnClickListener(new View.OnClickListener() {
@@ -204,6 +214,7 @@ public class CrimeFragment extends Fragment {
                 String suspect = c.getString(0);
                 mCrime.setmSuspect(suspect);
                 mSuspectButton.setText(suspect);
+                updateCallButton();
             } finally {
                 c.close();
             }
@@ -221,6 +232,11 @@ public class CrimeFragment extends Fragment {
 
     private void updateTime(){
         mTimeButton.setText(mCrime.getmDate().getHours() + ":" + mCrime.getmDate().getMinutes());
+    }
+
+    private void updateCallButton(){
+        mCallButton.setEnabled((mCrime.getmSuspect() != null));
+        mCallButton.setVisibility((mCrime.getmSuspect() != null) ? View.VISIBLE : View.INVISIBLE);
     }
 
     private String getCrimeReport(){
