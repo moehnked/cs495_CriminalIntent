@@ -44,6 +44,7 @@ public class CrimeFragment extends Fragment {
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "DialogDate";
     private static final String DIALOG_TIME = "DialogTime";
+    private static final String DIALOG_PHOTO = "DialogPhoto";
 
     private static final int REQUEST_DATE = 0;
     private static final int REQUEST_TIME = 1;
@@ -60,7 +61,7 @@ public class CrimeFragment extends Fragment {
     private Button mSuspectButton;
     private Button mCallButton;
     private ImageButton mPhotoButton;
-    private ImageView mPhotoView;
+    private ImageButton mPhotoView;
 
     public static CrimeFragment newInstance(UUID crimeId){
         Bundle args = new Bundle();
@@ -143,15 +144,6 @@ public class CrimeFragment extends Fragment {
         mReportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i = new Intent(Intent.ACTION_SEND);
-//                i.setType("text/plain");
-//                i.putExtra(Intent.EXTRA_TEXT, getCrimeReport());
-//                i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.crime_report_subject));
-//                i = Intent.createChooser(i, getString(R.string.send_report));
-//                startActivity(i);
-                /*
-                instead of setting up extras, this can be used to simply reference data points and let the necessary components for an intent be built automatically.
-                 */
                 Intent i = ShareCompat.IntentBuilder.from(getActivity())
                         .setType("text/plain")
                         .setChooserTitle(getString(R.string.send_report))
@@ -212,6 +204,16 @@ public class CrimeFragment extends Fragment {
 
 
         mPhotoView = v.findViewById(R.id.crime_photo);
+        mPhotoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //click the photo, zoom in, idiot
+                FragmentManager manager = getFragmentManager();
+                PhotoViewFragment dialog = PhotoViewFragment.newInstance(mPhotoFile.getPath());
+                dialog.show(manager, DIALOG_PHOTO);
+
+            }
+        });
         updatePhotoView();
 
         return v;
