@@ -35,7 +35,7 @@ public class CrimeLab {
         values.put(CrimeTable.Cols.DATE, crime.getmDate().toString());
         values.put(CrimeTable.Cols.SOLVED, (crime.ismSolved() ? 1 : 0));
         values.put(CrimeTable.Cols.SUSPECT, crime.getmSuspect());
-        //values.put(CrimeTable.Cols.NUMBER, crime.getmNumber());
+        values.put(CrimeTable.Cols.NUMBER, crime.getmNumber());
 
         return values;
     }
