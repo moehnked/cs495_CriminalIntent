@@ -10,6 +10,19 @@ public class Crime {
     private boolean mSolved;
     private boolean mRequiresPolice;
     private boolean mHasChanged;
+    private String mNumber;
+    private String mSuspectId;
+    private String mSuspect;
+
+    public String getmSuspectId() {
+        return mSuspectId;
+    }
+
+    public void setmSuspectId(String mSuspectId) {
+        this.mSuspectId = mSuspectId;
+    }
+
+
 
     public String getmNumber() {
         return mNumber;
@@ -19,7 +32,7 @@ public class Crime {
         this.mNumber = mNumber;
     }
 
-    private String mNumber;
+
 
     public String getmSuspect() {
         return mSuspect;
@@ -29,7 +42,7 @@ public class Crime {
         this.mSuspect = mSuspect;
     }
 
-    private String mSuspect;
+
 
     public UUID getmId() {
         return mId;
