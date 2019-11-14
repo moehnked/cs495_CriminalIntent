@@ -121,7 +121,7 @@ public class CrimeFragment extends Fragment {
                 dialog.setTargetFragment(CrimeFragment.this, REQUEST_DATE);
                 dialog.show(manager, DIALOG_DATE);
                 mCrime.setmHasChanged(true);
-                updateCrime();
+                //updateCrime();
             }
         });
 
@@ -135,7 +135,7 @@ public class CrimeFragment extends Fragment {
                 dialog.setTargetFragment(CrimeFragment.this, REQUEST_TIME);
                 dialog.show(manager, DIALOG_TIME);
                 mCrime.setmHasChanged(true);
-                updateCrime();
+                //updateCrime();
             }
         });
 
@@ -179,7 +179,7 @@ public class CrimeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivityForResult(pickContact, REQUEST_CONTACT);
-                updateCrime();
+                //updateCrime();
             }
         });
 
@@ -210,7 +210,7 @@ public class CrimeFragment extends Fragment {
                 }
 
                 startActivityForResult(captureImage, REQUEST_PHOTO);
-                updateCrime();
+                //updateCrime();
             }
         });
 
@@ -252,15 +252,17 @@ public class CrimeFragment extends Fragment {
         if(requestCode == REQUEST_DATE){
             Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setmDate(date);
-            updateDate();
             updateCrime();
+            updateDate();
+
         }
         if(requestCode == REQUEST_TIME){
             Date time = (Date) data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
             mCrime.getmDate().setHours(time.getHours());
             mCrime.getmDate().setMinutes(time.getMinutes());
-            updateTime();
             updateCrime();
+            updateTime();
+
         }
 
         if(requestCode == REQUEST_CONTACT){
@@ -289,9 +291,9 @@ public class CrimeFragment extends Fragment {
         if(requestCode == REQUEST_PHOTO){
             Uri uri = FileProvider.getUriForFile(getActivity(), "com.example.criminalintent.fileprovider", mPhotoFile);
             getActivity().revokeUriPermission(uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-
-            updatePhotoView();
             updateCrime();
+            updatePhotoView();
+
         }
     }
 
