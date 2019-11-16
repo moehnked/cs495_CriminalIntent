@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IntentoCriminal</string>
+    <string name="crime_title_hint">Introduzca un titulo para el crimen.</string>
+    <string name="crime_title_label">Titulo</string>
+    <string name="crime_details_label">Detalles</string>
+    <string name="crime_solved_label">Solucionado</string>
+    <string name="button_first">Primero</string>
+    <string name="button_last">Fin</string>
+    <string name="date_picker_title">Fecha del crimen:</string>
+    <string name="time_picker_title">Tiempo del crimen:</string>
+
+    <string name="empty_list_prompt">No hay delitos en el sistema.</string>
+    <string name="create_new_crime">Nuevo crimen</string>
+
+    <string name="new_crime">Nuevo crimen</string>
+    <plurals name="subtitle_plural">
+        <item quantity="one">%1$d crime</item>
+        <item quantity="other">%1$d crimes</item>
+    </plurals>
+    <string name="show_subtitle">Mostrar subtítulo</string>
+    <string name="hide_subtitle">Ocultar subtítulo</string>
+    <string name="delete_crime">Eliminar crimen</string>
+    <string name="subtitle_format">%1$d crímenes</string>
+
+    <string name="crime_suspect_text">Elige sospechoso</string>
+    <string name="crime_report_text">Enviar informe de crimen</string>
+    <string name="crime_report">%1$s!
+      El crimen fue descubierto en %2$s. %3$s, and %4$s
+    </string>
+    <string name="crime_report_solved">El caso está resuelto.</string>
+    <string name="crime_report_unsolved">El caso aún está abierto.</string>
+    <string name="crime_report_no_suspect">Todavía no hay sospechoso.</string>
+    <string name="crime_report_suspect">el sospechoso es %s.</string>
+    <string name="crime_report_subject">Informe de intenciones criminales</string>
+    <string name="send_report">Enviar informe de delito a través de</string>
+
+    <string name="call_crime_suspect">Llamada</string>
+
+
+</resources>
