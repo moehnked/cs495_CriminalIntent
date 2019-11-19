@@ -70,7 +70,8 @@
     <Button
         android:id="@+id/crime_date"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:contentDescription="Date of crime"/>
     <Button
         android:id="@+id/crime_time"
         android:layout_width="match_parent"
@@ -85,7 +86,10 @@
         android:id="@+id/crime_suspect"
         android:text="@string/crime_suspect_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:labelFor="@id/crime_suspect"
+        android:contentDescription="Selecting a suspect"
+        />
     <Button
         android:id="@+id/call_suspect"
         android:text="@string/call_crime_suspect"
